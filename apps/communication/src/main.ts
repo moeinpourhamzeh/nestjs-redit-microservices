@@ -1,8 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { CommunicationModule } from './communication.module';
 import { Transport, type MicroserviceOptions } from '@nestjs/microservices';
-import { AppModule } from 'apps/api/src/app.module';
-
+        
 async function bootstrap() {
  const redisConfigs = {
     host: process.env.REDIS_HOST || 'localhost',

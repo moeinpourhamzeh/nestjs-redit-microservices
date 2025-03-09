@@ -46,6 +46,24 @@ services:
       - backend_network
     depends_on:
       - redis
+  
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: production
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_DB: 0
+      REDIS_USERNAME: default
+      REDIS_PASSWORD: secretpassword
+    networks:
+      - backend_network
+    depends_on:
+      - redis
 
   redis:
     container_name: redis-db
